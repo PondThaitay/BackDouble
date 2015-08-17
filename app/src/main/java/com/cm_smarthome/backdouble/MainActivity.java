@@ -17,6 +17,8 @@ public class MainActivity extends ActionBarActivity {
     private boolean Count = false;
     private Button btnTel;
     private TextView tvNumber;
+    private static final int TIME_INTERVAL = 2000;
+    private long mBackPressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +40,14 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        Count = false;
-        super.onResume();
-    }
-
-    @Override
+   @Override
     public void onBackPressed() {
-
-        if (Count) {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
             super.onBackPressed();
             return;
+        } else {
+            Toast.makeText(getBaseContext(), "Press Back again to Exit", Toast.LENGTH_SHORT).show();
         }
-        Count = true;
-        Toast.makeText(context, "กดอีกทีเพื่อออก", Toast.LENGTH_SHORT).show();
+        mBackPressed = System.currentTimeMillis();
     }
 }
