@@ -33,9 +33,6 @@ cache:
     - $HOME/.gradle/native
     - $HOME/.gradle/wrapper
 
-script:
-     - ./gradlew build connectedCheck
-
 test:
   pre:
     - $ANDROID_HOME/tools/emulator -avd testAVD -no-skin -no-audio -no-window:
