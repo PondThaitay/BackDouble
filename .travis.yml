@@ -28,5 +28,4 @@ cache:
     - $HOME/.gradle/wrapper
 
 script:
-  - ./gradlew assembleDebug -PdisablePreDex
-  - ./gradlew assembleAndroidTest -PdisablePreDex
+     - ./gradlew build connectedCheck
