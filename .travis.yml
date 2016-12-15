@@ -4,6 +4,11 @@ branches:
   only:
     - master
 
+jdk: oraclejdk7
+  env:
+    matrix:
+      - ANDROID_SDKS=android-18,sysimg-18  ANDROID_TARGET=android-18  ANDROID_ABI=armeabi-v7a
+
 android:
   components:
     # Uncomment the lines below if you want to
@@ -16,7 +21,8 @@ android:
 
 install: true
 
-before_script: chmod +x gradlew
+before_install:
+  - chmod +x gradlew
 
 sudo: false
 cache:
@@ -29,3 +35,16 @@ cache:
 
 script:
      - ./gradlew build connectedCheck
+
+test:
+  pre:
+    - $ANDROID_HOME/tools/emulator -avd testAVD -no-skin -no-audio -no-window:
+      background: true
+    - (./gradlew assembleDebug):
+      timeout: 1200
+    - (./gradlew assembleDebugTest):
+      timeout: 1200
+    - (source scripts/environmentSetup.sh && waitForAVD)
+  override:
+    - (echo "Running JUnit tests!")
+    - (./gradlew co
