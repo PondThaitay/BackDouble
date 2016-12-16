@@ -41,7 +41,7 @@ script:
 
 deploy:
   # Deploy the file(s) to the github release (other targets like amazon-aws or npm can be found here: http://docs.travis-ci.com/user/deployment/ )
-  provider: debug
+  provider: releases
   # The oauth token for github (used by travis to upload the file(s) to github)
   api_key:
     # The api-key is encrypted like described here: http://docs.travis-ci.com/user/encryption-keys/  (only travis can decrypt the key)
