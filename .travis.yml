@@ -46,5 +46,3 @@ deploy:
     password: "55021744pond"
     file: "app/build/outputs/apk/app-release.apk"
     skip_cleanup: true
-    on:
-        tags: true
