@@ -37,15 +37,13 @@ install:
 #  - mv app/gradle.properties
 
 script:
-  - ./gradlew assembleDebug
+  - ./gradlew assembleRelease
 
 deploy:
   # Deploy the file(s) to the github release (other targets like amazon-aws or npm can be found here: http://docs.travis-ci.com/user/deployment/ )
   provider: releases
-  # The oauth token for github (used by travis to upload the file(s) to github)
-  api_key: 59a33f7db9c43715522768f541983a3d72ae0dfd
-    # The api-key is encrypted like described here: http://docs.travis-ci.com/user/encryption-keys/  (only travis can decrypt the key)
-  # Which file(s) to upload
-  file: app/build/outputs/apk/app-release.apk
+  user: pondthaitay
+    password: 55021744pond
+    file: app/build/outputs/apk/app-release.apk
   # do not delete the files we're trying to upload
   skip_cleanup: true
