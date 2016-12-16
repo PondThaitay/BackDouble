@@ -41,9 +41,10 @@ script:
 
 deploy:
   # Deploy the file(s) to the github release (other targets like amazon-aws or npm can be found here: http://docs.travis-ci.com/user/deployment/ )
-  provider: releases
+    provider: releases
     user: "pondthaitay"
     password: "55021744pond"
     file: "app/build/outputs/apk/app-release.apk"
-  # do not delete the files we're trying to upload
-  skip_cleanup: true
+    skip_cleanup: true
+    on:
+        tags: true
