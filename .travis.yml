@@ -37,4 +37,4 @@ install:
 #  - mv app/gradle.properties
 
 script:
-  - ./gradlew clean assembleDebug
+  - ./gradlew assembleDebug
